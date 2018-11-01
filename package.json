@@ -5,11 +5,12 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node hello.test.js"
+    "test": "node hello.test.js",
+    "deploy": "sh ./bin/deployAJ.sh"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nelsonic/circleci-hello-world-nodejs.git"
+    "url": "git+https://github.com/akashjobanputra/learning-circleci.git"
   },
   "keywords": [
     "circle-ci",
@@ -20,7 +21,7 @@
   "author": "polymath",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/nelsonic/circleci-hello-world-nodejs/issues"
+    "url": "https://github.com/akashjobanputra/learning-circleci/issues"
   },
-  "homepage": "https://github.com/nelsonic/circleci-hello-world-nodejs#readme"
+  "homepage": "https://github.com/akashjobanputra/learning-circleci#readme"
 }
