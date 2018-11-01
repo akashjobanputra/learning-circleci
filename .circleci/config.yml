@@ -22,7 +22,7 @@ jobs:
           - v1-dependencies-
       - run: 
           name: List Directories recursively
-          command: ls -R
+          command: ls -R ~/
 
       - run: 
           name: Install local dependencies
@@ -54,7 +54,7 @@ jobs:
       steps:
         - run:
             name: Deploy over SSH
-            command: ~/repo/bin/deployAJ.sh
+            command: ~/project/bin/deployAJ.sh
 
 workflows:
     version: 2
