@@ -1,7 +1,7 @@
 ## Let's try to build and deploy the projec now
 # git checkout master
 
-tar -zcvf learning-circleci.tar.gz ./*
+tar -zcvf learning-circleci.tar.gz ~/project/*
 echo '###########'
 echo 'Copying the build to the server'
 echo '###########'
