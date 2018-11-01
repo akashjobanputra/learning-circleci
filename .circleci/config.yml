@@ -52,6 +52,9 @@ jobs:
       machine:
         enabled: true
       steps:
+        - run: 
+            name: List Directories recursively
+            command: ls -R ~/
         - run:
             name: Deploy over SSH
             command: ~/project/bin/deployAJ.sh
