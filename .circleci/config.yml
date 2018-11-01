@@ -67,7 +67,7 @@ jobs:
                 echo 'executing over server'
                 ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'ls -a -R ~'
                 #
-                ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '~/bin/serverSide.sh'
+                ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '~/project/bin/serverSide.sh'
 
 
 workflows:
