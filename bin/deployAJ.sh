@@ -1,12 +1,13 @@
+#!/bin/bash
 ## Let's try to build and deploy the projec now
 # git checkout master
-#!/bin/bash
 
-tar -zcvf learning-circleci.tar.gz /home/circleci/project/*
+
+# tar -zcvf learning-circleci.tar.gz /home/circleci/project/*
 echo '###########'
 echo 'Copying the build to the server'
 echo '###########'
-scp learning-circleci.tar.gz $SSH_USER@$SSH_HOST:/home/$SSH_USER
+scp ~/project/ $SSH_USER@$SSH_HOST:/home/$SSH_USER
 echo '###########'
 echo 'Extacting the build to the server and executing it'
 echo '###########'

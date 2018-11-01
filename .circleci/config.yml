@@ -58,7 +58,16 @@ jobs:
             command: ls -R ~/
         - run:
             name: Deploy over SSH
-            command: ~/project/bin/deployAJ.sh
+            command: |
+                echo 'Copying project to server'
+                #
+                scp -r ~/project/ $SSH_USER@$SSH_HOST:/home/ec2-user/
+                # cat ~/project/bin/serverSide.sh | ssh $SSH_USER@$SSH_HOST 'mkdir -p ~/circleci-dep && cat >> ~/circleci-dep/deploy.sh'
+                #
+                echo 'executing over server'
+                #
+                ssh $SSH_USER@$SSH_HOST '~/ec2-user/bin/serverSide.sh'
+
 
 workflows:
     version: 2
