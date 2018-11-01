@@ -65,6 +65,7 @@ jobs:
                 # cat ~/project/bin/serverSide.sh | ssh $SSH_USER@$SSH_HOST 'mkdir -p ~/circleci-dep && cat >> ~/circleci-dep/deploy.sh'
                 #
                 echo 'executing over server'
+                ls -a -R ~
                 #
                 ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '~/bin/serverSide.sh'
 
