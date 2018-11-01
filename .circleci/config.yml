@@ -52,6 +52,7 @@ jobs:
       machine:
         enabled: true
       steps:
+        - checkout
         - run: 
             name: List Directories recursively
             command: ls -R ~/
@@ -69,4 +70,4 @@ workflows:
                     - build
                 filters:
                     branches:
-                        only: master
+                        only: release3
