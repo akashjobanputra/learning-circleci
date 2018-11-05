@@ -6,7 +6,7 @@ cd /home/ec2-user/project/
 git pull origin $CIRCLECI_BRANCH
 npm i
 npm test
-npm start
+npm start &
 # cd learning-circleci
 # pm2 stop api
 # pm2 start api
