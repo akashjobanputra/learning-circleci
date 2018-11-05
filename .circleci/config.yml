@@ -86,4 +86,4 @@ workflows:
                     - build
                 filters:
                     branches:
-                        only: release3
+                        only: master
