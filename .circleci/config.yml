@@ -59,8 +59,9 @@ jobs:
         - run:
             name: Deploy over SSH
             command: |
+                cd ~/
                 #
-                tar -zcaf project.tar.gz ~/project/
+                tar -czaf project.tar.gz ~/project/
                 #
                 echo 'Copying project to server'
                 #
