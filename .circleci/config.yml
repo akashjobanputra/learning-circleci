@@ -52,6 +52,9 @@ jobs:
       machine:
         enabled: true
       steps:
+        - add_ssh_keys:
+            fingerprints:
+                - "07:92:bd:47:8b:ff:b9:f4:df:3f:00:7c:0c:9f:8e:3b"
         - checkout
         - run: 
             name: List Directories recursively
@@ -67,7 +70,7 @@ jobs:
                 echo 'executing over server'
                 ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'ls -a -R ~'
                 #
-                ssh -vvv -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '~/project/bin/serverSide.sh'
+                ssh -vvv -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'bash ~/project/bin/serverSide.sh'
 
 
 workflows:
