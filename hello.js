@@ -1,3 +1,3 @@
 module.exports = function hello () {
-  return 'Hello World!';
+  return 'Hello AutoDeployed Code!';
 }
