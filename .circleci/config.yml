@@ -52,9 +52,6 @@ jobs:
       machine:
         enabled: true
       steps:
-        # - add_ssh_keys:
-            # fingerprints:
-                # - "07:92:bd:47:8b:ff:b9:f4:df:3f:00:7c:0c:9f:8e:3b"
         - checkout
         - run: 
             name: List Directories recursively
@@ -62,14 +59,18 @@ jobs:
         - run:
             name: Deploy over SSH
             command: |
+                #
+                tar -zcaf project.tar.gz ~/project/
+                #
                 echo 'Copying project to server'
                 #
-                scp -r -o StrictHostKeyChecking=no ~/project/ $SSH_USER@$SSH_HOST:/home/ec2-user/
+                scp -r -o StrictHostKeyChecking=no ~/project.tar.gz $SSH_USER@$SSH_HOST:/home/ec2-user/
                 # cat ~/project/bin/serverSide.sh | ssh $SSH_USER@$SSH_HOST 'mkdir -p ~/circleci-dep && cat >> ~/circleci-dep/deploy.sh'
                 #
                 echo 'executing over server'
-                ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'ls -a -R ~'
+                # ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'ls -a -R ~'
                 #
+                ssh -vvv -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'tar -caf ~/project.tar.gz'
                 ssh -vvv -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'bash ~/project/bin/serverSide.sh'
 
 

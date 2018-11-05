@@ -3,7 +3,7 @@
 echo "Starting Deployment"
 # mkdir -p /home/ec2-user/learning-circleci/
 cd /home/ec2-user/project/
-git pull 
+git pull origin $CIRCLECI_BRANCH
 npm i
 npm test
 npm start
