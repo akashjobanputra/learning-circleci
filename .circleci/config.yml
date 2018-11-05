@@ -61,18 +61,19 @@ jobs:
             command: |
                 cd ~/
                 #
-                tar -czaf project.tar.gz ~/project/
+                tar -czaf project.tar.gz ~/project
                 #
                 echo 'Copying project to server'
                 #
                 scp -r -o StrictHostKeyChecking=no ~/project.tar.gz $SSH_USER@$SSH_HOST:/home/ec2-user/
                 # cat ~/project/bin/serverSide.sh | ssh $SSH_USER@$SSH_HOST 'mkdir -p ~/circleci-dep && cat >> ~/circleci-dep/deploy.sh'
                 #
-                echo 'executing over server'
+                echo 'extracting project in server'
                 # ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'ls -a -R ~'
                 #
-                ssh -vvv -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'tar -caf ~/project.tar.gz'
-                ssh -vvv -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'bash ~/project/bin/serverSide.sh'
+                ssh -v -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'tar -caf ~/project.tar.gz'
+                echo 'executing the serverSide.sh script'
+                ssh -v -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'bash ~/project/bin/serverSide.sh'
 
 
 workflows:
