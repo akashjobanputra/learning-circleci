@@ -71,9 +71,9 @@ jobs:
                 echo 'extracting project in server'
                 # ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'ls -a -R ~'
                 #
-                ssh -v -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'tar -xvf ~/project.tar.gz'
+                ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'tar -xvf ~/project.tar.gz'
                 echo 'executing the serverSide.sh script'
-                ssh -v -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'bash ~/project/bin/serverSide.sh'
+                ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'bash ~/project/bin/serverSide.sh'
 
 
 workflows:
