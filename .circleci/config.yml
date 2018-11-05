@@ -52,12 +52,29 @@ jobs:
       machine:
         enabled: true
       steps:
+        - checkout
         - run: 
             name: List Directories recursively
             command: ls -R ~/
         - run:
             name: Deploy over SSH
-            command: ~/project/bin/deployAJ.sh
+            command: |
+                cd ~/
+                #
+                tar -czaf project.tar.gz ~/project
+                #
+                echo 'Copying project to server'
+                #
+                scp -r -o StrictHostKeyChecking=no ~/project.tar.gz $SSH_USER@$SSH_HOST:/home/ec2-user/
+                # cat ~/project/bin/serverSide.sh | ssh $SSH_USER@$SSH_HOST 'mkdir -p ~/circleci-dep && cat >> ~/circleci-dep/deploy.sh'
+                #
+                echo 'extracting project in server'
+                # ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'ls -a -R ~'
+                #
+                ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'tar -xvf ~/project.tar.gz'
+                echo 'executing the serverSide.sh script'
+                ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'bash ~/project/bin/serverSide.sh'
+
 
 workflows:
     version: 2
